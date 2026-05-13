@@ -24,9 +24,7 @@
             height: 55%;
             background: linear-gradient(transparent, rgba(0,0,0,0.9));
         }
-        .masonry-grid {
-            column-count: 2; column-gap: 16px;
-        }
+        .masonry-grid { column-count: 2; column-gap: 16px; }
         @media (min-width: 640px) { .masonry-grid { column-count: 3; } }
         @media (min-width: 768px) { .masonry-grid { column-count: 4; } }
         @media (min-width: 1024px) { .masonry-grid { column-count: 5; } }
@@ -38,64 +36,46 @@
 </head>
 <body class="bg-[#0f0f0f] text-white">
 
-    <!-- Top Navigation -->
+    <!-- Navigation -->
     <nav class="bg-black border-b border-zinc-800 sticky top-0 z-50">
         <div class="max-w-screen-2xl mx-auto">
             <div class="px-4 py-3.5 flex items-center justify-between">
-                <!-- Logo -->
                 <div onclick="location.reload()" class="logo-font text-4xl font-black tracking-tighter cursor-pointer cb-pink">
                     chaturbate
                 </div>
 
-                <!-- Search -->
                 <div class="flex-1 max-w-2xl mx-8">
                     <div class="relative">
-                        <input id="search-input" type="text" placeholder="Search models, tags..." 
+                        <input id="search-input" 
+                               type="text" 
+                               placeholder="Search models, tags..." 
                                class="w-full bg-zinc-900 border border-zinc-700 focus:border-pink-500 rounded-2xl py-3.5 px-5 pl-12 text-sm outline-none">
                         <i class="fa-solid fa-magnifying-glass absolute left-5 top-4 text-zinc-400"></i>
                     </div>
                 </div>
 
-                <!-- Main Links + Dropdown -->
                 <div class="flex items-center gap-5 text-sm font-medium">
-                    <a href="https://chaturbate.com/in/?tour=NwNd&campaign=T2CSW&track=default" 
-                       target="_blank" class="hover:text-pink-400 transition-colors">Broadcast Yourself</a>
+                    <a href="https://chaturbate.com/in/?tour=NwNd&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Broadcast Yourself</a>
                     
-                    <a href="https://chaturbate.com/in/?tour=3Mc9&campaign=T2CSW&track=default&redirect_to_room=-welcomepage-" 
-                       target="_blank" class="bg-pink-600 hover:bg-pink-500 px-6 py-2.5 rounded-2xl font-semibold transition-colors">
+                    <a href="https://chaturbate.com/in/?tour=3Mc9&campaign=T2CSW&track=default&redirect_to_room=-welcomepage-" target="_blank" 
+                       class="bg-pink-600 hover:bg-pink-500 px-6 py-2.5 rounded-2xl font-semibold">
                         Join Now
                     </a>
 
-                    <!-- Explore Dropdown -->
                     <div class="relative group">
-                        <button class="flex items-center gap-1 hover:text-pink-400 transition-colors">
+                        <button class="flex items-center gap-1 hover:text-pink-400">
                             Explore <i class="fa-solid fa-chevron-down text-xs"></i>
                         </button>
                         <div class="absolute hidden group-hover:block right-0 mt-2 w-80 bg-zinc-900 border border-zinc-700 rounded-2xl shadow-2xl py-3 z-50 text-sm">
                             <div class="grid grid-cols-2 gap-x-6 gap-y-2 px-4">
                                 <a href="https://chaturbate.com/in/?tour=jb4g&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Contest Details</a>
                                 <a href="https://chaturbate.com/in/?tour=07kX&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Affiliate Program</a>
-                                
                                 <a href="https://chaturbate.com/in/?tour=grq0&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Home Page</a>
                                 <a href="https://chaturbate.com/in/?tour=IsSO&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Females</a>
                                 <a href="https://chaturbate.com/in/?tour=R2Xc&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Males</a>
                                 <a href="https://chaturbate.com/in/?tour=0G9g&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Couples</a>
                                 <a href="https://chaturbate.com/in/?tour=khMd&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Trans</a>
-
                                 <a href="https://chaturbate.com/in/?tour=hr8m&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Top Room</a>
-                                <a href="https://chaturbate.com/in/?tour=uhEc&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Top Female</a>
-                                <a href="https://chaturbate.com/in/?tour=EyCi&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Top Male</a>
-                                <a href="https://chaturbate.com/in/?tour=43Qk&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Top Couple</a>
-                                <a href="https://chaturbate.com/in/?tour=2MTk&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Top Trans</a>
-
-                                <a href="https://chaturbate.com/in/?tour=41Ea&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Random Female</a>
-                                <a href="https://chaturbate.com/in/?tour=9rL0&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Random Male</a>
-                                <a href="https://chaturbate.com/in/?tour=goZq&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Random Couple</a>
-                                <a href="https://chaturbate.com/in/?tour=sxJR&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Random Trans</a>
-
-                                <a href="https://chaturbate.com/in/?tour=AZcr&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Asian Cams</a>
-                                <a href="https://chaturbate.com/in/?tour=NAcr&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">North America</a>
-                                <a href="https://chaturbate.com/in/?tour=ERcr&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Euro / Russian</a>
                             </div>
                         </div>
                     </div>
@@ -123,7 +103,6 @@
         </div>
     </nav>
 
-    <!-- Rest of the page (same as previous version) -->
     <div class="max-w-screen-2xl mx-auto px-4 py-8">
         <div id="featured" class="mb-12">
             <h2 class="text-2xl font-semibold mb-5 flex items-center gap-3"><span class="text-pink-400">★</span> Featured Live</h2>
@@ -132,7 +111,7 @@
 
         <div class="flex items-center justify-between mb-6">
             <h2 class="text-3xl font-semibold">Live Rooms</h2>
-            <button onclick="loadRooms()" class="flex items-center gap-2 text-zinc-400 hover:text-white">
+            <button onclick="loadRooms()" class="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
                 <i class="fa-solid fa-sync"></i> <span>Refresh</span>
             </button>
         </div>
@@ -140,14 +119,13 @@
         <div id="rooms-grid" class="masonry-grid"></div>
 
         <div class="flex justify-center mt-16">
-            <button onclick="loadMore()" class="px-14 py-5 bg-zinc-800 hover:bg-zinc-700 rounded-2xl font-medium text-lg">
+            <button onclick="loadMore()" class="px-14 py-5 bg-zinc-800 hover:bg-zinc-700 rounded-2xl font-medium text-lg border border-zinc-700 hover:border-zinc-500">
                 Load More Cams
             </button>
         </div>
     </div>
 
     <script>
-        // ... (Keep the same JavaScript from the previous version - API integration, rendering, filters, etc.)
         let allRooms = [];
         let filteredRooms = [];
         let displayed = 60;
@@ -156,19 +134,115 @@
 
         const WM_ID = 'T2CSW';
 
-        async function loadRooms() { /* same as before */ }
-        async function getClientIP() { /* same as before */ }
-        function renderRooms() { /* same as before */ }
-        function filterByGender() { /* same as before */ }
-        function applyFilters() { /* same as before */ }
-        function loadMore() { /* same as before */ }
+        async function loadRooms() {
+            try {
+                const ip = await getClientIP();
+                const url = `https://chaturbate.com/api/public/affiliates/onlinerooms/?wm=${WM_ID}&client_ip=${ip}&limit=500`;
+                
+                const res = await fetch(url);
+                const data = await res.json();
 
-        document.getElementById('search-input').addEventListener('input', (e) => {
-            searchTerm = e.target.value.toLowerCase().trim();
+                allRooms = data.results || [];
+                document.getElementById('online-total').textContent = allRooms.length.toLocaleString();
+                applyFilters();
+            } catch (err) {
+                console.error("API Error:", err);
+            }
+        }
+
+        async function getClientIP() {
+            try {
+                const res = await fetch('https://api.ipify.org?format=json');
+                const data = await res.json();
+                return data.ip;
+            } catch {
+                return '8.8.8.8';
+            }
+        }
+
+        function getBestThumbnail(room) {
+            const username = room.username;
+            return room.image_url_360x270 || 
+                   room.image_url || 
+                   `https://thumb.live.mmcdn.com/ri/${username}.jpg` ||
+                   `https://picsum.photos/id/${100 + Math.floor(Math.random()*200)}/640/360`;
+        }
+
+        function renderRooms(containerId, rooms, limit) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = '';
+
+            const toShow = rooms.slice(0, limit || rooms.length);
+
+            toShow.forEach(room => {
+                const div = document.createElement('div');
+                div.className = `room-card bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden cursor-pointer card`;
+
+                div.innerHTML = `
+                    <div class="thumbnail-container">
+                        <img src="${getBestThumbnail(room)}" 
+                             loading="lazy"
+                             class="w-full aspect-video object-cover bg-black"
+                             onerror="this.onerror=null; this.src='https://picsum.photos/id/${100 + Math.floor(Math.random()*200)}/640/360';">
+                        <div class="absolute top-3 left-3 bg-black/80 text-[10px] px-2.5 py-0.5 rounded flex items-center gap-1 font-mono">
+                            <span class="text-green-400">●</span> ${(room.num_users/1000).toFixed(1)}k
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="font-semibold text-lg">${room.username}</div>
+                        <div class="text-zinc-400 text-sm line-clamp-2 mt-1 min-h-[42px]">${room.room_subject || 'No description'}</div>
+                        <div class="flex justify-between items-center text-xs mt-4 text-zinc-500">
+                            <span>${room.age ? room.age : '?'} • ${room.gender.toUpperCase()}</span>
+                            <span class="text-emerald-400 font-medium">${room.num_users.toLocaleString()}</span>
+                        </div>
+                    </div>
+                `;
+                div.onclick = () => window.open(room.chat_room_url_revshare || `https://chaturbate.com/${room.username}/`, '_blank');
+                container.appendChild(div);
+            });
+        }
+
+        function filterByGender(gender) {
+            currentGender = gender;
+            document.querySelectorAll('.gender-tab').forEach(tab => {
+                tab.classList.toggle('active', 
+                    (gender === 'all' && tab.id === 'filter-all') || tab.id === `filter-${gender}`);
+            });
             applyFilters();
-        });
+        }
 
-        window.onload = () => loadRooms();
+        function applyFilters() {
+            filteredRooms = allRooms.filter(room => {
+                const genderMatch = currentGender === 'all' || room.gender === currentGender;
+                const searchMatch = !searchTerm || 
+                    room.username.toLowerCase().includes(searchTerm) ||
+                    (room.room_subject && room.room_subject.toLowerCase().includes(searchTerm));
+                return genderMatch && searchMatch;
+            });
+            displayed = 60;
+            renderRooms('rooms-grid', filteredRooms, displayed);
+            renderRooms('hero-grid', filteredRooms, 5);
+        }
+
+        function loadMore() {
+            displayed += 40;
+            renderRooms('rooms-grid', filteredRooms, displayed);
+        }
+
+        // Safe initialization
+        window.onload = () => {
+            // Safe search listener
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    searchTerm = e.target.value.toLowerCase().trim();
+                    applyFilters();
+                });
+            }
+
+            loadRooms();
+        };
     </script>
 </body>
 </html>
