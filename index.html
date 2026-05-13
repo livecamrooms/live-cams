@@ -36,7 +36,6 @@
 </head>
 <body class="bg-[#0f0f0f] text-white">
 
-    <!-- Navigation -->
     <nav class="bg-black border-b border-zinc-800 sticky top-0 z-50">
         <div class="max-w-screen-2xl mx-auto">
             <div class="px-4 py-3.5 flex items-center justify-between">
@@ -46,9 +45,7 @@
 
                 <div class="flex-1 max-w-2xl mx-8">
                     <div class="relative">
-                        <input id="search-input" 
-                               type="text" 
-                               placeholder="Search models, tags..." 
+                        <input id="search-input" type="text" placeholder="Search models, tags..." 
                                class="w-full bg-zinc-900 border border-zinc-700 focus:border-pink-500 rounded-2xl py-3.5 px-5 pl-12 text-sm outline-none">
                         <i class="fa-solid fa-magnifying-glass absolute left-5 top-4 text-zinc-400"></i>
                     </div>
@@ -56,29 +53,8 @@
 
                 <div class="flex items-center gap-5 text-sm font-medium">
                     <a href="https://chaturbate.com/in/?tour=NwNd&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Broadcast Yourself</a>
-                    
                     <a href="https://chaturbate.com/in/?tour=3Mc9&campaign=T2CSW&track=default&redirect_to_room=-welcomepage-" target="_blank" 
-                       class="bg-pink-600 hover:bg-pink-500 px-6 py-2.5 rounded-2xl font-semibold">
-                        Join Now
-                    </a>
-
-                    <div class="relative group">
-                        <button class="flex items-center gap-1 hover:text-pink-400">
-                            Explore <i class="fa-solid fa-chevron-down text-xs"></i>
-                        </button>
-                        <div class="absolute hidden group-hover:block right-0 mt-2 w-80 bg-zinc-900 border border-zinc-700 rounded-2xl shadow-2xl py-3 z-50 text-sm">
-                            <div class="grid grid-cols-2 gap-x-6 gap-y-2 px-4">
-                                <a href="https://chaturbate.com/in/?tour=jb4g&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Contest Details</a>
-                                <a href="https://chaturbate.com/in/?tour=07kX&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Affiliate Program</a>
-                                <a href="https://chaturbate.com/in/?tour=grq0&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Home Page</a>
-                                <a href="https://chaturbate.com/in/?tour=IsSO&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Females</a>
-                                <a href="https://chaturbate.com/in/?tour=R2Xc&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Males</a>
-                                <a href="https://chaturbate.com/in/?tour=0G9g&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Couples</a>
-                                <a href="https://chaturbate.com/in/?tour=khMd&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Trans</a>
-                                <a href="https://chaturbate.com/in/?tour=hr8m&campaign=T2CSW&track=default" target="_blank" class="hover:text-pink-400">Top Room</a>
-                            </div>
-                        </div>
-                    </div>
+                       class="bg-pink-600 hover:bg-pink-500 px-6 py-2.5 rounded-2xl font-semibold">Join Now</a>
                 </div>
             </div>
         </div>
@@ -111,7 +87,7 @@
 
         <div class="flex items-center justify-between mb-6">
             <h2 class="text-3xl font-semibold">Live Rooms</h2>
-            <button onclick="loadRooms()" class="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
+            <button onclick="loadRooms()" class="flex items-center gap-2 text-zinc-400 hover:text-white">
                 <i class="fa-solid fa-sync"></i> <span>Refresh</span>
             </button>
         </div>
@@ -119,7 +95,7 @@
         <div id="rooms-grid" class="masonry-grid"></div>
 
         <div class="flex justify-center mt-16">
-            <button onclick="loadMore()" class="px-14 py-5 bg-zinc-800 hover:bg-zinc-700 rounded-2xl font-medium text-lg border border-zinc-700 hover:border-zinc-500">
+            <button onclick="loadMore()" class="px-14 py-5 bg-zinc-800 hover:bg-zinc-700 rounded-2xl font-medium text-lg">
                 Load More Cams
             </button>
         </div>
@@ -143,7 +119,11 @@
                 const data = await res.json();
 
                 allRooms = data.results || [];
-                document.getElementById('online-total').textContent = allRooms.length.toLocaleString();
+                
+                // Safe update
+                const counter = document.getElementById('online-total');
+                if (counter) counter.textContent = allRooms.length.toLocaleString();
+
                 applyFilters();
             } catch (err) {
                 console.error("API Error:", err);
@@ -161,11 +141,10 @@
         }
 
         function getBestThumbnail(room) {
-            const username = room.username;
+            const u = room.username;
             return room.image_url_360x270 || 
                    room.image_url || 
-                   `https://thumb.live.mmcdn.com/ri/${username}.jpg` ||
-                   `https://picsum.photos/id/${100 + Math.floor(Math.random()*200)}/640/360`;
+                   `https://thumb.live.mmcdn.com/ri/${u}.jpg`;
         }
 
         function renderRooms(containerId, rooms, limit) {
@@ -230,9 +209,8 @@
             renderRooms('rooms-grid', filteredRooms, displayed);
         }
 
-        // Safe initialization
-        window.onload = () => {
-            // Safe search listener
+        // Initialize everything safely
+        window.onload = function() {
             const searchInput = document.getElementById('search-input');
             if (searchInput) {
                 searchInput.addEventListener('input', (e) => {
@@ -240,7 +218,6 @@
                     applyFilters();
                 });
             }
-
             loadRooms();
         };
     </script>
