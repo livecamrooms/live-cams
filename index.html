@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaturbate - Free Live Sex Cams & Adult Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .logo-font {
+            font-family: system-ui, -apple-system, sans-serif;
+            letter-spacing: -2px;
+        }
+
+        .card {
+            transition: all 0.2s ease;
+        }
+        .card:hover {
+            transform: scale(1.04);
+            z-index: 10;
+        }
+
+        .thumbnail-container {
+            position: relative;
+        }
+        
+        .thumbnail-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+        }
+
+        .masonry-grid {
+            column-count: 2;
+            column-gap: 12px;
+        }
+        @media (min-width: 640px) { .masonry-grid { column-count: 3; } }
+        @media (min-width: 768px) { .masonry-grid { column-count: 4; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 5; } }
+        @media (min-width: 1280px) { .masonry-grid { column-count: 6; } }
+
+        .room-card { break-inside: avoid; margin-bottom: 12px; }
+        
+        .cb-pink { color: #ff2a6d; }
+    </style>
+</head>
+<body class="bg-[#1a1a1a] text-white">
+    <!-- Top Navigation -->
+    <nav class="bg-black border-b border-zinc-800 sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="px-4 py-3 flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center gap-4">
+                    <div onclick="location.reload()" 
+                         class="logo-font text-4xl font-black tracking-tighter cursor-pointer cb-pink">
+                        chaturbate
+                    </div>
+                </div>
+
+                <!-- Search -->
+                <div class="flex-1 max-w-2xl mx-8">
+                    <div class="relative">
+                        <input id="search-input" 
+                               type="text" 
+                               placeholder="Search cams, models, tags..." 
+                               class="w-full bg-zinc-900 border border-zinc-700 focus:border-pink-500 rounded-lg py-3 px-5 pl-12 text-sm">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-zinc-400"></i>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-6 text-sm font-medium">
+                    <a href="#" class="hover:text-pink-400 transition-colors">Broadcast Yourself</a>
+                    <a href="#" class="hover:text-pink-400 transition-colors">Tokens</a>
+                    <a href="https://chaturbate.com" target="_blank" class="text-pink-400 hover:text-pink-300">Join Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gender Tabs -->
+        <div class="bg-black border-t border-zinc-800">
+            <div class="max-w-screen-2xl mx-auto px-4">
+                <div class="flex items-center gap-1 overflow-x-auto py-2 text-sm font-medium no-scrollbar">
+                    <button onclick="filterByGender('all')" id="filter-all" 
+                            class="gender-tab active px-6 py-2 rounded-md whitespace-nowrap">All</button>
+                    <button onclick="filterByGender('f')" id="filter-f" 
+                            class="gender-tab px-6 py-2 rounded-md whitespace-nowrap flex items-center gap-1.5">
+                        <span class="text-pink-400">♀</span> Female
+                    </button>
+                    <button onclick="filterByGender('m')" id="filter-m" 
+                            class="gender-tab px-6 py-2 rounded-md whitespace-nowrap flex items-center gap-1.5">
+                        <span class="text-blue-400">♂</span> Male
+                    </button>
+                    <button onclick="filterByGender('c')" id="filter-c" 
+                            class="gender-tab px-6 py-2 rounded-md whitespace-nowrap">Couple</button>
+                    <button onclick="filterByGender('t')" id="filter-t" 
+                            class="gender-tab px-6 py-2 rounded-md whitespace-nowrap">Trans</button>
+                    
+                    <div class="ml-auto flex items-center gap-4 text-xs text-zinc-400">
+                        <div class="flex items-center gap-1">
+                            <span class="text-green-400">●</span>
+                            <span id="online-total" class="font-mono font-bold text-lg text-white">14,892</span> online
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-screen-2xl mx-auto px-4 py-6">
+        <!-- Featured / Hero Strip -->
+        <div id="featured" class="mb-10">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold flex items-center gap-2">
+                    <span class="text-pink-400">★</span> Featured Live
+                </h2>
+            </div>
+            <div id="hero-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+        </div>
+
+        <!-- Main Rooms Grid -->
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-semibold">Live Rooms</h2>
+            <button onclick="refreshRooms()" class="text-zinc-400 hover:text-white flex items-center gap-2 text-sm">
+                <i class="fa-solid fa-sync"></i> Refresh
+            </button>
+        </div>
+
+        <div id="rooms-grid" class="masonry-grid"></div>
+
+        <div class="flex justify-center mt-16">
+            <button onclick="loadMore()" 
+                    class="px-12 py-4 bg-zinc-800 hover:bg-zinc-700 rounded-xl font-medium text-lg border border-zinc-600 hover:border-zinc-500 transition-colors">
+                Load More Cams
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let allRooms = [];
+        let filteredRooms = [];
+        let displayed = 60;
+        let currentGender = 'all';
+        let searchTerm = '';
+
+        function generateDemoData() {
+            const baseNames = ["scarletluna", "crimsonkitten", "amylaa", "emilyblaze", "sophia_wet", "lunaandjason", "marcusbigdick", "sofia_trans", "rubyrosexx", "frostbyte"];
+            const subjects = [
+                "Squirt goal 💦", 
+                "New toy play tonight", 
+                "Cum with me ❤️", 
+                "Private open • Lush on",
+                "Oil + twerk show",
+                "Creampie goal for couples",
+                "JOI + CEI",
+                "ASMR & teasing"
+            ];
+
+            const data = [];
+            for (let i = 0; i < 120; i++) {
+                const username = baseNames[Math.floor(Math.random() * baseNames.length)] + (i > 9 ? i : '');
+                data.push({
+                    username: username,
+                    subject: subjects[Math.floor(Math.random() * subjects.length)],
+                    num_users: Math.floor(Math.random() * 18500) + 420,
+                    gender: ["f","f","f","m","c","t"][Math.floor(Math.random()*6)],
+                    age: Math.floor(Math.random() * 18) + 19
+                });
+            }
+            return data;
+        }
+
+        function renderRooms(containerId, rooms, limit) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+
+            const toShow = rooms.slice(0, limit || rooms.length);
+
+            toShow.forEach(room => {
+                const div = document.createElement('div');
+                div.className = `room-card bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden cursor-pointer card`;
+                div.innerHTML = `
+                    <div class="thumbnail-container">
+                        <img src="https://thumb.live.mmcdn.com/riw/${room.username}.jpg" 
+                             class="w-full aspect-video object-cover"
+                             onerror="this.src='https://picsum.photos/id/${80 + Math.floor(Math.random()*50)}/640/360'">
+                        
+                        <div class="absolute top-2 left-2 bg-black/70 text-[10px] px-2 py-0.5 rounded flex items-center gap-1">
+                            <span class="text-green-400 text-xs">●</span>
+                            <span class="font-mono">${(room.num_users/1000).toFixed(1)}k</span>
+                        </div>
+                        
+                        ${room.gender === 'f' ? `<div class="absolute top-2 right-2 bg-pink-600 text-[10px] px-2 py-px rounded">F</div>` : ''}
+                    </div>
+                    <div class="p-3">
+                        <div class="font-semibold text-base">${room.username}</div>
+                        <div class="text-zinc-400 text-xs line-clamp-2 mt-1 min-h-[32px]">${room.subject}</div>
+                        <div class="flex justify-between items-center text-[10px] mt-3 text-zinc-500">
+                            <span>${room.age} • ${room.gender.toUpperCase()}</span>
+                            <span class="text-emerald-400 font-medium">${room.num_users.toLocaleString()}</span>
+                        </div>
+                    </div>
+                `;
+                div.onclick = () => window.open(`https://chaturbate.com/${room.username}/`, '_blank');
+                container.appendChild(div);
+            });
+        }
+
+        function filterByGender(gender) {
+            currentGender = gender;
+            
+            document.querySelectorAll('.gender-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.id === `filter-${gender}`);
+                if (gender === 'all' && tab.id === 'filter-all') tab.classList.add('active');
+            });
+
+            applyFilters();
+        }
+
+        function applyFilters() {
+            filteredRooms = allRooms.filter(room => {
+                const genderMatch = currentGender === 'all' || room.gender === currentGender;
+                const searchMatch = !searchTerm || 
+                    room.username.toLowerCase().includes(searchTerm) ||
+                    room.subject.toLowerCase().includes(searchTerm);
+                return genderMatch && searchMatch;
+            });
+            displayed = 60;
+            renderRooms('rooms-grid', filteredRooms, displayed);
+        }
+
+        function loadMore() {
+            displayed += 30;
+            renderRooms('rooms-grid', filteredRooms, displayed);
+        }
+
+        function refreshRooms() {
+            displayed = 60;
+            renderRooms('rooms-grid', filteredRooms, displayed);
+        }
+
+        // Init
+        window.onload = () => {
+            allRooms = generateDemoData();
+            filteredRooms = [...allRooms];
+
+            // Render featured (first 5)
+            renderRooms('hero-grid', allRooms, 5);
+
+            // Render main grid
+            renderRooms('rooms-grid', filteredRooms, displayed);
+
+            // Search
+            document.getElementById('search-input').addEventListener('input', (e) => {
+                searchTerm = e.target.value.toLowerCase().trim();
+                applyFilters();
+            });
+
+            // Fake online counter
+            setInterval(() => {
+                let count = parseInt(document.getElementById('online-total').textContent.replace(/[^0-9]/g, ''));
+                count += Math.floor(Math.random() * 18) + 7;
+                document.getElementById('online-total').textContent = count.toLocaleString();
+            }, 3200);
+        };
+    </script>
+</body>
+</html>
